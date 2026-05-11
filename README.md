@@ -4,24 +4,24 @@
 [![Publish](https://github.com/crystalplanetcode/ai-semantic-schema/actions/workflows/publish.yml/badge.svg)](https://github.com/crystalplanetcode/ai-semantic-schema/actions/workflows/publish.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
-Provides an AI semantic context layer for JPA/Hibernate-based domain models through a set of AI annotations. It helps AI systems understand your data model without manual DDL schema authoring. 
+Provides an AI semantic context layer for JPA / Hibernate-based domain models through a set of AI annotations. It helps AI systems understand your data model without manual DDL schema authoring. 
 
 With Spring Boot support out of the box, you can go from JPA entities to AI-ready schema in minutes. Build your data model with Spring Data JPA, transform it into AI schema context with AI Semantic Schema and use it with Spring AI as input for LLM.
 
-AI Semantic Schema transforms JPA/Hibernate metadata together with AI annotations into a structured semantic schema for LLM-powered systems. It captures entity meaning, field semantics, relations, and metrics directly from the domain model and exposes the result as JSON or YAML. In Spring Boot applications, auto-configuration enables immediate integration with minimal setup. It converts your existing domain model into rich semantic context, including human / LLM meaning of tables and fields, relations, and metrics, ready for AI prompts.
+AI Semantic Schema transforms JPA / Hibernate metadata together with AI annotations into a structured semantic schema for LLM-powered systems. It captures entity meaning, field semantics, relations, and metrics directly from the domain model and exposes the result as JSON or YAML. In Spring Boot applications, auto-configuration enables immediate integration with minimal setup. It converts your existing domain model into rich semantic context, including human / LLM meaning of tables and fields, relations, and metrics, ready for AI prompts.
 
 ```mermaid
 flowchart TD
-    A["JPA Entities"]
-    B["AI Annotation Processor"]
-    C["Schema Builder\n(runtime)"]
+    A["JPA Entities\n(database schema)"]
+    B["AI Annotation Processor\n(semantic enhancement)"]
+    C["AI Schema Builder\n(runtime combine the above)"]
     D["LLM Context Generator"]
-    E["Text-to-SQL / Q&A Engine"]
+    E["Natural language to SQL / JPQL / RAG / Q&A"]
 
     A --> B --> C --> D --> E
 ```
 
-Practical useage example: **AI Semantic Schema Demo**: https://github.com/crystalplanetcode/ai-semantic-schema-demo
+Practical usage example: **AI Semantic Schema Demo**: https://github.com/crystalplanetcode/ai-semantic-schema-demo
 
 ## Quick Start
 
