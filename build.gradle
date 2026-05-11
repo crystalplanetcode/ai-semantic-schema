@@ -96,6 +96,15 @@ subprojects {
   }
 }
 
+tasks.withType(Jar).configureEach {
+  from(rootProject.file('LICENSE')) {
+    into('META-INF')
+  }
+  from(rootProject.file('NOTICE')) {
+    into('META-INF')
+  }
+}
+
 nmcpAggregation {
   centralPortal {
     username = findProperty('mavenCentralUsername') ?: System.getenv('MAVEN_CENTRAL_USERNAME')
