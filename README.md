@@ -6,25 +6,13 @@ With Spring Boot support out of the box, you can go from JPA entities to AI-read
 
 AI Semantic Schema transforms JPA/Hibernate metadata together with AI annotations into a structured semantic schema for LLM-powered systems. It captures entity meaning, field semantics, relations, and metrics directly from the domain model and exposes the result as JSON or YAML. In Spring Boot applications, auto-configuration enables immediate integration with minimal setup. It converts your existing domain model into rich semantic context, including human / LLM meaning of tables and fields, relations, and metrics, ready for AI prompts.
 
-```
-JPA Entities
-    ↓
-AI Annotation Processor
-    ↓
-Schema Builder (runtime)
-    ↓
-LLM Context Generator
-    ↓
-Text to SQL / JPQL / Q&A engine / RAG
-```
-
 ```mermaid
 flowchart TD
-    A[JPA Entities]
-    B[AI Annotation Processor]
-    C[Schema Builder<br/>(runtime)]
-    D[LLM Context Generator]
-    E[Text-to-SQL / Q&A Engine]
+    A["JPA Entities"]
+    B["AI Annotation Processor"]
+    C["Schema Builder\n(runtime)"]
+    D["LLM Context Generator"]
+    E["Text-to-SQL / Q&A Engine"]
 
     A --> B --> C --> D --> E
 ```
