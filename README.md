@@ -1,5 +1,9 @@
 # AI Semantic Schema
 
+[![CI](https://github.com/crystalplanetcode/ai-semantic-schema/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/crystalplanetcode/ai-semantic-schema/actions/workflows/ci.yml)
+[![Publish](https://github.com/crystalplanetcode/ai-semantic-schema/actions/workflows/publish.yml/badge.svg)](https://github.com/crystalplanetcode/ai-semantic-schema/actions/workflows/publish.yml)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 Provides an AI semantic context layer for JPA/Hibernate-based domain models through a set of AI annotations. It helps AI systems understand your data model without manual DDL schema authoring. 
 
 With Spring Boot support out of the box, you can go from JPA entities to AI-ready schema in minutes. Build your data model with Spring Data JPA, transform it into AI schema context with AI Semantic Schema and use it with Spring AI as input for LLM.
