@@ -1,0 +1,109 @@
+plugins {
+  id 'java'
+  id 'maven-publish'
+  id 'signing'
+  id 'com.gradleup.nmcp.aggregation' version '1.5.0'
+}
+
+allprojects {
+  group = findProperty('group')
+  version = findProperty('version')
+
+  repositories {
+    mavenCentral()
+  }
+}
+
+subprojects {
+  apply plugin: 'java-library'
+  apply plugin: 'maven-publish'
+  apply plugin: 'signing'
+  apply plugin: 'com.gradleup.nmcp'
+
+  tasks.withType(Jar).configureEach {
+    from(rootProject.file('LICENSE')) {
+      into('META-INF')
+    }
+    from(rootProject.file('NOTICE')) {
+      into('META-INF')
+    }
+  }
+
+  dependencies {
+    testImplementation platform('org.junit:junit-bom:5.12.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  }
+
+  java {
+    toolchain {
+      languageVersion = JavaLanguageVersion.of(25)
+    }
+    withJavadocJar()
+    withSourcesJar()
+  }
+
+  tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+  }
+
+  tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+  }
+
+  publishing {
+    publications {
+      mavenJava(MavenPublication) {
+        from components.java
+
+        pom {
+          name = project.name
+          description = 'AI semantic schema extraction and Spring Boot starter'
+          url = 'https://github.com/crystalplanetcode/ai-semantic-schema'
+
+          licenses {
+            license {
+              name = 'Apache License, Version 2.0'
+              url = 'https://www.apache.org/licenses/LICENSE-2.0'
+            }
+          }
+
+          developers {
+            developer {
+              id = 'crystalplanetcode'
+              name = 'Crystal Planet Code'
+            }
+          }
+
+          scm {
+            connection = 'scm:git:https://github.com/crystalplanetcode/ai-semantic-schema.git'
+            developerConnection = 'scm:git:ssh://git@github.com/crystalplanetcode/ai-semantic-schema.git'
+            url = 'https://github.com/crystalplanetcode/ai-semantic-schema'
+          }
+        }
+      }
+    }
+  }
+
+  signing {
+    def signingKey = findProperty('signingKey') ?: System.getenv('SIGNING_KEY')
+    def signingPassword = findProperty('signingPassword') ?: System.getenv('SIGNING_PASSWORD')
+    if (signingKey != null && signingPassword != null) {
+      useInMemoryPgpKeys(signingKey, signingPassword)
+      sign publishing.publications
+    }
+  }
+}
+
+nmcpAggregation {
+  centralPortal {
+    username = findProperty('mavenCentralUsername') ?: System.getenv('MAVEN_CENTRAL_USERNAME')
+    password = findProperty('mavenCentralPassword') ?: System.getenv('MAVEN_CENTRAL_PASSWORD')
+    publishingType = 'AUTOMATIC'
+  }
+}
+
+dependencies {
+  subprojects.each { nmcpAggregation(project(it.path)) }
+}

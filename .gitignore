@@ -1,0 +1,70 @@
+# Gradle
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+**/build/
+**/bin/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# System
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Environment configuration files (optional)
+application-local.yml
+application-dev.yml
+
+# Test output
+test-output/
+
+# Java
+*.class
+*.war
+*.ear
+
+# Spring Boot
+*.pid
+*.pid.lock
+
+# Maven
+target/
+
+# Coverage / reports
+coverage/
+
+# SonarQube
+.sonar/
+checkstyle-report.xml
+
+# Documentation
+**/docs/
+
+# JaCoCo
+jacoco.exec
+**/jacoco-report/
+
+# Docker
+.env
+docker-compose.yml
+docker-compose.override.yml

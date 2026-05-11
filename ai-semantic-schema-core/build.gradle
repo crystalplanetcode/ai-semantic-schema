@@ -1,0 +1,17 @@
+dependencies {
+  api 'com.fasterxml.jackson.core:jackson-databind:2.20.0'
+  api 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.20.0'
+
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.12.2'
+
+  publishing {
+	publications {
+	  mavenJava(MavenPublication) {
+	    pom {
+		  name = project.name
+		  description = 'Core library for AI semantic schema extraction and representation'
+		}
+	  }
+	}
+  }  
+}
